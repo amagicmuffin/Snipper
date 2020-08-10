@@ -4,7 +4,7 @@ import os
 def snip():
     files = len(os.listdir('/home/pi'))
     os.system('scrot -s')
-    if files < len(os.listdir('/home/pi')):
+    if files < len(os.listdir('/home/pi')): # check if a new screenshot was added
         snippingTool.destroy()
 
 
