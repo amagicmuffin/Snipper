@@ -2,15 +2,28 @@ import tkinter as tk
 import os
 
 def snip():
-    files = len(os.listdir('/home/pi'))
-    os.system('scrot -s')
-    if files < len(os.listdir('/home/pi')): # check if a new screenshot was added
-        snippingTool.destroy()
+    os.system('scrot -s') # take a snip
+
 
 
 snippingTool = tk.Tk()
 
-button = tk.Button(snippingTool,text = 'Snip',padx = 50,pady = 10,command = snip)
-button.pack()
+#snip button
+snip = tk.snip(snippingTool,text = 'Snip',padx = 50,pady = 10,command = snip)
+snip.pack()
+
+#delay dropdown menu 
+delay = Menubutton (top, text="Delay", relief=RAISED)
+delay.grid()
+delay.menu =  Menu ( mb, tearoff = 0 )
+delay["menu"] =  mb.menu
+
+mayoVar = IntVar()
+ketchVar = IntVar()
+
+delay.menu.add_checkbutton ( label="mayo",
+                          variable=mayoVar )
+delay.menu.add_checkbutton ( label="ketchup",
+                          variable=ketchVar )
 
 snippingTool.mainloop()
